@@ -1,0 +1,4 @@
+#directories
+_testdata/
+# files ending on
+*.html
