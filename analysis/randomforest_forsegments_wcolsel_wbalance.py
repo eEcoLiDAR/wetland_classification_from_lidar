@@ -66,8 +66,6 @@ def cohenkappa_calc(cm):
 
     return cohenkappa
 
-#################################################################################################
-
 parser = argparse.ArgumentParser()
 parser.add_argument('path', help='where the files are located')
 parser.add_argument('segments', help='polygon shape file with features and classes')
@@ -92,7 +90,7 @@ segments['Highestid']=segments['Highestid'].replace(['Riet','Struweel','Grasland
 #feature_list=['mean_Plana','mean_Curva','mean_kurto','mean_Spher']
 feature_list=segments.columns[7:35]
 
-segments_whighprob=segments[(segments['Prob']>0.7)&(segments['poly_area']>10)]
+segments_whighprob=segments[(segments['Prob']>0.4)&(segments['poly_area']>0)]
 
 feature=segments_whighprob[feature_list].values
 feature_all=segments[feature_list].values
@@ -174,3 +172,4 @@ with open(args.path+args.segments+"_RFclass_acc.txt", 'w') as f:
 	f.write(classification_report(mytestlabel, mypredtest))
 	f.write(np.array2string(cohenkappa_calc(confusion_matrix(mytestlabel, mypredtest))))
 	f.write(np.array2string(importances[indices]))
+	f.write(np.array2string(feature_list[indices]))
