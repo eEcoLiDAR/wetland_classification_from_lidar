@@ -11,7 +11,7 @@ Steps:
 3. Feature calculation 
 4. Export
 
-Example usage (from command line): python <path of laserchicken> <file path/las file> <file path/target las file> radius <file path/output file>
+Example usage (from command line): python computefea_wtargets_cylinder.py <path>/laserchicken/ <path of data>/_testdata/tile_207500_598500_1_1.las <path of data>/_testdata/tile_207500_598500_1_1.las 2.5 <path of data>/tile_207500_598500_1_1_fea.ply
 
 ToDo: 
 """
@@ -21,14 +21,6 @@ import time
 import numpy as np
 
 import sys
-sys.path.insert(0, args.path_of_laserchicken)
-
-from laserchicken import read_las
-from laserchicken.keys import point
-from laserchicken.volume_specification import InfiniteCylinder
-from laserchicken.compute_neighbors import compute_neighborhoods
-from laserchicken.feature_extractor import compute_features
-from laserchicken.write_ply import write
 
 parser = argparse.ArgumentParser()
 parser.add_argument('path_of_laserchicken', help='The path of laserchicken')
@@ -37,6 +29,15 @@ parser.add_argument('target', help='absolute path of target points (las file)')
 parser.add_argument('radius', help='radius of the volume (a float number)')
 parser.add_argument('output', help='absolute path of output point cloud')
 args = parser.parse_args()
+
+sys.path.insert(0, args.path_of_laserchicken)
+
+from laserchicken import read_las
+from laserchicken.keys import point
+from laserchicken.volume_specification import InfiniteCylinder
+from laserchicken.compute_neighbors import compute_neighborhoods
+from laserchicken.feature_extractor import compute_features
+from laserchicken.write_ply import write
 
 print("------ Import is started ------")
 
