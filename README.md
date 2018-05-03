@@ -2,7 +2,7 @@
 
 This repository aims to collect all the scripts which was used for wetland classification using Airborne Laser Scanning data within the [e-EcoliDAR project](https://www.esciencecenter.nl/project/eecolidar).
 
-** The content of the directories are the following:**
+**The content of the directories are the following:**
 
 - **analysis**:
 
