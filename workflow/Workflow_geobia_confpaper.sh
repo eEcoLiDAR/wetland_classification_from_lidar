@@ -14,7 +14,12 @@ Main workflow steps:
 Example usage (from command line):  bash D:/GitHub/eEcoLiDAR/myPhD_escience_analysis/bash_process/Workflow_analysis_geobia.sh
 
 ToDo: 
-1. Get the boundary automatically
+1. conversion merge all the tiles together it will not work for larger study area
+2. too much output (I/O is time consuming task)
+3. spatial join should be optimized
+
+Comment:
+1. For visualize ply file in CC the comment section should be deleted
 '
 
 # set paths
@@ -48,7 +53,7 @@ minsize=1
 
 echo "--------Feature calculation is started--------"
 
-python $script_path/laserchicken_process/computefea_wtargets_cylinder.py $path_of_laserchicken $work_folder/$filename.las $work_folder/$filename.las $radius $work_folder/$filename.ply
+#python $script_path/laserchicken_process/computefea_wtargets_cylinder.py $path_of_laserchicken $work_folder/$filename.las $work_folder/$filename.las $radius $work_folder/$filename.ply
 
 # Convert ply files into cleaned text file and merge it together
 
@@ -61,7 +66,7 @@ echo "--------Conversion is started--------"
 
 echo "--------PCA analysis is started--------"
 
-#python $script_path/analysis/pca_geobia.py $work_folder/all_tiles_clean.txt 
+python $script_path/analysis/pca_geobia.py $work_folder/all_tiles_clean.txt 
 
 echo "--------Segmentation started--------"
 
