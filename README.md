@@ -20,7 +20,7 @@ Visualization and camera ready figure plot for publication prupose.
 
 Using [laserchicken](https://github.com/eEcoLiDAR/laserchicken) point cloud analysis software for extracting features for ALS data. 
 
-- **worlflow**:
+- **workflow**:
 
 Bash file for executing the scripts from this repository and build a consistent workflow for processing the ALS data. 
 
