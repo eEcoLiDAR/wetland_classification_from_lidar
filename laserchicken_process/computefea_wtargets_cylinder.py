@@ -11,7 +11,7 @@ Steps:
 3. Feature calculation 
 4. Export
 
-Example usage (from command line): python computefea_wtargets_cylinder.py <path>/laserchicken/ <path of data>/_testdata/tile_207500_598500_1_1.las <path of data>/_testdata/tile_207500_598500_1_1.las 2.5 <path of data>/tile_207500_598500_1_1_fea.ply
+Example usage (from command line): python computefea_wtargets_cylinder.py <path>/laserchicken/ <path of data>/_testdata/testdata.las <path of data>/_testdata/testdata.las 2.5 <path of data>/testdata_fea.ply
 
 ToDo: 
 """
