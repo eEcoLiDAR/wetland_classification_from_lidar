@@ -1,6 +1,6 @@
 # Wetland classification using country-wide ALS data
 
-This repository aims to collect all the scripts which was used for wetland classification using Airborne Laser Scanning data within the [e-EcoliDAR project](https://www.esciencecenter.nl/project/eecolidar).
+This repository aims to collect all the scripts which was used for wetland classification based on Airborne Laser Scanning data within the [e-EcoLiDAR project](https://www.esciencecenter.nl/project/eecolidar).
 
 ## **The content of the directories are the following:**
 
@@ -31,7 +31,7 @@ Follow the instructions from here: https://escience-academy.github.io/2017-09-06
 
 2. Install Anaconda (most preferably the latest version): https://conda.io/docs/user-guide/install/index.html
 
-3. Install GRASS GIS (version 7.2 or above): https://grasswiki.osgeo.org/wiki/Installation_Guide (I used the OSGeo4W installer which can be access during QGIS installation: https://qgis.org/en/site/forusers/download.html)
+3. Install GRASS GIS (version 7.2 or above): https://grasswiki.osgeo.org/wiki/Installation_Guide (OSGeo4W installer can be accessed during QGIS installation: https://qgis.org/en/site/forusers/download.html)
 
 ### Install laserchicken software
 
