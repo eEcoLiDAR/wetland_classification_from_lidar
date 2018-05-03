@@ -26,6 +26,8 @@ Bash file for executing the scripts from this repository and build a consistent 
 
 ## **Installation requirements**
 
+Generally the workflow was tested under Windows 10 operation system. The workflow can be run under Linux operation system, however the GRASS GIS section should be adapted.
+
 1. Install Git: https://gitforwindows.org/
 Follow the instructions from here: https://escience-academy.github.io/2017-09-06-git-github/#setup
 
@@ -60,6 +62,6 @@ conda install -c conda-forge shapely
 
 ### Install addons for GRASS GIS
 
-### The list of required and used python packages
+### Completed list of required and used python packages
 
 
