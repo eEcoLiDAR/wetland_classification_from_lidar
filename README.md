@@ -10,7 +10,7 @@ These scripts contains the processing steps related to analyse, convert and clas
 
 - **figures**:
 
-Visualization and camera ready figure plot for publication prupose.
+Visualization and camera ready figure plot for publication purpose.
 
 - **grassgis_process**:
 
