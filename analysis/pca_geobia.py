@@ -3,7 +3,7 @@
 Aim: carry out PCA analysis (and optionally correlation analysis within the features)
 
 Input: cleaned txt (output of ply_tograss.py)
-Output: txt with header (X,Y,Z + 3 most important PCs) + plot about cumulative explained variance vs. PCs
+Output: txt with header (X,Y,Z + 3 most important PCs) + plot about correlation matrix and cumulative explained variance vs. PCs
 
 Example usage (from command line): python ply_tograss.py C:/zsofia/Amsterdam/Geobia/Features/ tile_208000_598000_1_1.las.ply
 
@@ -36,17 +36,16 @@ pc_wfea = pd.read_csv(args.pcwfea,sep=',',names=['X','Y','Z','echo_ratio','Plana
 features=pc_wfea[['pulse_penetration_ratio','echo_ratio','Planarity','Sphericity','Curvature','kurto_z','skew_z','std_z','var_z','sigma_z','max_z','mean_z','median_z','range']]
 
 # Extract correlation coefficients
-"""
-font = {'family': 'normal',
-        'weight': 'bold',
-        'size': 20}
 
-plt.rc('font', **font)
-fig=sns.heatmap(pc_wfea[['pulse_penetration_ratio','echo_ratio','Planarity','Sphericity','Curviture','kurto_z','skew_z','std_z','var_z','sigma_z','max_z','mean_z','median_z','range']].corr(), annot=True, fmt=".2f",xticklabels=1,yticklabels=1)
+plt.figure(figsize=(10,8))
+fig=sns.heatmap(pc_wfea[['pulse_penetration_ratio','echo_ratio','Planarity','Sphericity','Curvature','kurto_z','skew_z','std_z','var_z','sigma_z','max_z','mean_z','median_z','range']].corr(method='pearson'), annot=True, fmt=".2f",xticklabels=1,yticklabels=1)
 plt.setp(fig.xaxis.get_majorticklabels(), rotation=25, horizontalalignment='right')
 plt.setp(fig.yaxis.get_majorticklabels(), rotation=25, horizontalalignment='right')
-plt.show()
-"""
+plt.tight_layout()
+#plt.show()
+plt.savefig(args.pcwfea+"_corr_anal.png")
+plt.close()
+
 
 # PCA analysis
 
@@ -65,8 +64,10 @@ plt.ylabel('Cumulative explained variance',fontsize=18)
 plt.xlabel('Number of components',fontsize=18)
 plt.title('PCA Analysis of the geometrical feature-set',fontsize=18)
 plt.style.context('seaborn-whitegrid')
+plt.tight_layout()
 #plt.show()
 plt.savefig(args.pcwfea+"_PCA_anal.png")
+plt.close()
 
 #print(features_transf.shape)
 
