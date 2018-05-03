@@ -1,14 +1,24 @@
+"""
+@author: Zsofia Koma, UvA and Romulo Goncalves NLeSC
+Aim: calculate features using laserchicken within a cylinder
+
+Input: las file
+Output: ply file with the calculated features
+
+Steps:
+1. Import data
+2. Compute neighborhood within the defined cylinder cylinder (kdtree approach) [furthermore target points can be defined == only calculate the feature related selected points but based on the original point cloud, however the results only linked back to the target point -- here the target point == environment point which means we calculated the neighborhood point by point]
+3. Feature calculation 
+4. Export
+
+Example usage (from command line): python <path of laserchicken> <file path/las file> <file path/target las file> radius <file path/output file>
+
+ToDo: 
+"""
+
 import argparse
 import time
 import numpy as np
-
-parser = argparse.ArgumentParser()
-parser.add_argument('path_of_laserchicken', help='The path of laserchicken')
-parser.add_argument('input', help='absolute path of input point cloud')
-parser.add_argument('target', help='target points as las file')
-parser.add_argument('radius', help='radius of the volume')
-parser.add_argument('output', help='absolute path of output point cloud')
-args = parser.parse_args()
 
 import sys
 sys.path.insert(0, args.path_of_laserchicken)
@@ -19,6 +29,14 @@ from laserchicken.volume_specification import InfiniteCylinder
 from laserchicken.compute_neighbors import compute_neighborhoods
 from laserchicken.feature_extractor import compute_features
 from laserchicken.write_ply import write
+
+parser = argparse.ArgumentParser()
+parser.add_argument('path_of_laserchicken', help='The path of laserchicken')
+parser.add_argument('input', help='absolute path of input point cloud (las file)')
+parser.add_argument('target', help='absolute path of target points (las file)')
+parser.add_argument('radius', help='radius of the volume (a float number)')
+parser.add_argument('output', help='absolute path of output point cloud')
+args = parser.parse_args()
 
 print("------ Import is started ------")
 
@@ -37,6 +55,7 @@ start = time.time()
 #
 #indices_cyl=compute_neighborhoods(pc, target, InfiniteCylinder(np.float(args.radius)))
 #
+
 neighbors=compute_neighborhoods(pc, target, InfiniteCylinder(np.float(args.radius)))
 iteration=0
 target_idx_base=0
