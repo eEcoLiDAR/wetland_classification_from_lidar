@@ -2,7 +2,7 @@
 
 This repository aims to collect all the scripts which was used for wetland classification based on Airborne Laser Scanning data within the [e-EcoLiDAR project](https://www.esciencecenter.nl/project/eecolidar).
 
-## **The content of the directories are the following:**
+## **The content of the directories**
 
 - **analysis**:
 
@@ -62,6 +62,8 @@ conda install -c conda-forge shapely
 
 ### Install addons for GRASS GIS
 
-### Completed list of required and used python packages
+### Completed list of used python packages
+
+## **Usage**
 
 
