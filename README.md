@@ -2,7 +2,7 @@
 
 This repository aims to collect all the scripts which was used for wetland classification using Airborne Laser Scanning data within the [e-EcoliDAR project](https://www.esciencecenter.nl/project/eecolidar).
 
-**The content of the directories are the following:**
+## **The content of the directories are the following:**
 
 - **analysis**:
 
@@ -24,4 +24,4 @@ Using [laserchicken](https://github.com/eEcoLiDAR/laserchicken) point cloud anal
 
 Bash file for executing the scripts from this repository and build a consistent workflow for processing the ALS data. 
 
-**Installation requirements**
+## **Installation requirements**
