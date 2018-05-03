@@ -48,7 +48,7 @@ minsize=1
 
 echo "--------Feature calculation is started--------"
 
-python $script_path/laserchicken_process/computefea_wtargets_cylinder.py $path_of_laserchicken $work_folder/$filename.las $path_of_laserchicken $work_folder/$filename.las $radius $work_folder/$filename.ply
+python $script_path/laserchicken_process/computefea_wtargets_cylinder.py $path_of_laserchicken $work_folder/$filename.las $work_folder/$filename.las $radius $work_folder/$filename.ply
 
 # Convert ply files into cleaned text file and merge it together
 
