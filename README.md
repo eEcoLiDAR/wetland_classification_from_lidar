@@ -25,3 +25,41 @@ Using [laserchicken](https://github.com/eEcoLiDAR/laserchicken) point cloud anal
 Bash file for executing the scripts from this repository and build a consistent workflow for processing the ALS data. 
 
 ## **Installation requirements**
+
+1. Install Git: https://gitforwindows.org/
+Follow the instructions from here: https://escience-academy.github.io/2017-09-06-git-github/#setup
+
+2. Install Anaconda (most preferably the latest version): https://conda.io/docs/user-guide/install/index.html
+
+3. Install GRASS GIS (version 7.2 or above): https://grasswiki.osgeo.org/wiki/Installation_Guide (I used the OSGeo4W installer which can be access during QGIS installation: https://qgis.org/en/site/forusers/download.html)
+
+### Install laserchicken software
+
+1. Get the software (GitHub repository: https://github.com/eEcoLiDAR/laserchicken)
+
+a.) Clone the repository (official release)
+
+```
+git clone https://github.com/eEcoLiDAR/laserchicken.git
+```
+
+b.) Download as zip file without using git
+
+2. Install
+
+Within the command line (using the right python version) go to this directory and run the following:
+
+```
+pip install .
+```
+
+If shapely failed than install it separately:
+```
+conda install -c conda-forge shapely
+```
+
+### Install addons for GRASS GIS
+
+### The list of required and used python packages
+
+
