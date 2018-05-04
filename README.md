@@ -22,7 +22,11 @@ Using [laserchicken](https://github.com/eEcoLiDAR/laserchicken) point cloud anal
 
 - **workflow**:
 
-Bash file for executing the scripts from this repository and build a consistent workflow for processing the ALS data. 
+Bash file for executing the scripts from this repository and build a consistent workflow for processing the ALS data.
+
+- **testdata**:
+
+Small example dataset for testing purpose.  
 
 ## **Installation requirements**
 
@@ -62,8 +66,28 @@ conda install -c conda-forge shapely
 
 ### Install addons for GRASS GIS
 
-### Completed list of used python packages
+Two addons is required to install for running this workflow. For the installation after starting up GRASS GIS from command line (grass74 -gtext) you can install addons with the following commands:
+```
+g.extension extension=r.neighborhoodmatrix
+g.extension extension=i.segment.uspo
+```
 
 ## **Usage**
+
+For run the entire workflow you should check that in the bash workflow file ( wetland_classification_from_lidar/workflow/Workflow_geobia_confpaper.sh
+) every absolute path is correct.
+
+- work_folder: where the files are located (testdata directory with the sample dataset and the results will be saved in this directory too)
+- script_path: where the wetland_classification_from_lidar is located
+- path_of_laserchicken: this is where the laserchicken repository is located on your computer
+- grass_path: location of your GRASS GIS bin directory
+- grass_mapset: before running the workflow user should set up a mapset with Descartes coordinate system (run from GRASS GIS command line separately grass74 -gtext and then follow the instructions of the software)
+
+The valid_polygon which is provided within this repository not the original one (just an example digitalization from my side). It only can be used to test whether the workflow is running. Also the test data is a small tile of the study area [from AHN2 laser campaign](http://www.arcgis.com/home/item.html?id=6c898cd924c441d5aea33b3bc6cc117a) only for demonstration. 
+
+```
+bash Workflow_geobia_confpaper.sh
+```
+ 
 
 
