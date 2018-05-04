@@ -50,6 +50,7 @@ pc_wfea = gpd.GeoDataFrame(pc_wfea,crs=crs)
 print("------ Spatial join ------ ")
 pointInPolys = sjoin(segments_point , validation, how='left',op='within')
 #pointInPolys.drop_duplicates('value')
+pointInPolys=pointInPolys.dropna(subset=['structyp_e'])
 
 # vote for the most frequently presented class
 
