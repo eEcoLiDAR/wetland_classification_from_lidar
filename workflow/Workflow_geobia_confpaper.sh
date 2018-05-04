@@ -23,7 +23,7 @@ Comment:
 '
 
 # set paths
-work_folder="D:/GitHub/eEcoLiDAR/wetland_classification_from_lidar/_testdata/"
+work_folder="D:/GitHub/eEcoLiDAR/wetland_classification_from_lidar/testdata/"
 script_path="D:/GitHub/eEcoLiDAR/wetland_classification_from_lidar/"
 
 path_of_laserchicken="D:/GitHub/eEcoLiDAR/laserchicken_r1/laserchicken/"
@@ -33,7 +33,7 @@ grass_mapset="D:/Geobia_2018/Results_12ofApril/GrassGIS/LauMeer" #should set up 
 
 # set filenames
 filename="testdata"
-valid_polygon="vlakken_union_structuur"
+valid_polygon="testpoly"
 
 # set parameters for laserchicken
 radius=1
@@ -53,33 +53,33 @@ minsize=1
 
 echo "--------Feature calculation is started--------"
 
-#python $script_path/laserchicken_process/computefea_wtargets_cylinder.py $path_of_laserchicken $work_folder/$filename.las $work_folder/$filename.las $radius $work_folder/$filename.ply
+python $script_path/laserchicken_process/computefea_wtargets_cylinder.py $path_of_laserchicken $work_folder/$filename.las $work_folder/$filename.las $radius $work_folder/$filename.ply
 
 # Convert ply files into cleaned text file and merge it together
 
 echo "--------Conversion is started--------"
 
-#for f in $work_folder*.ply;do python $script_path/analysis/ply_tograss.py ${f%.ply};done
-#cat $work_folder*_clean.txt > $work_folder/all_tiles_clean.txt
+for f in $work_folder*.ply;do python $script_path/analysis/ply_tograss.py ${f%.ply};done
+cat $work_folder*_clean.txt > $work_folder/all_tiles_clean.txt
 
 # PCA analysis and determine most important PCs
 
 echo "--------PCA analysis is started--------"
 
-#python $script_path/analysis/pca_geobia.py $work_folder/all_tiles_clean.txt 
+python $script_path/analysis/pca_geobia.py $work_folder/all_tiles_clean.txt 
 
 echo "--------Segmentation started--------"
 
-# GRASS GIS segmentation parameter optimization
+# GRASS GIS segmentation parameter optimization (run separately then analyze visually)
 #$grass_path/grass74.bat --exec $script_path/grassgis_process/grass_workflow_uspo.bat $work_folder all_tiles_clean.txt_PC1__PC2__PC3 $n $s $e $w
 
 # GRASS GIS segmentation
-#$grass_path/grass74.bat --exec $script_path/grassgis_process/grass_segmentation_whinwflow.bat $grass_mapset $work_folder all_tiles_clean.txt_PC1__PC2__PC3 $n $s $e $w $threshold $minsize
+$grass_path/grass74.bat --exec $script_path/grassgis_process/grass_segmentation_whinwflow.bat $grass_mapset $work_folder all_tiles_clean.txt_PC1__PC2__PC3 $n $s $e $w $threshold $minsize
 
 echo "--------Assign validation data and calculate segment based features --------"
 
 #Assign validation data and calculate segment based features
-#python $script_path/analysis/assignclass_calcfea.py $work_folder $valid_polygon all_tiles_clean.txt_PC1__PC2__PC3_groupPCs_point_$threshold$minsize all_tiles_clean.txt_PC1__PC2__PC3_groupPCs_poly_$threshold$minsize all_tiles_clean.txt
+python $script_path/analysis/assignclass_calcfea.py $work_folder $valid_polygon all_tiles_clean.txt_PC1__PC2__PC3_groupPCs_point_$threshold$minsize all_tiles_clean.txt_PC1__PC2__PC3_groupPCs_poly_$threshold$minsize all_tiles_clean.txt
 
 echo "--------Classification --------"
 
